@@ -22,8 +22,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))  
-from utils.plot_utils import plot_regression_line
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../utils")))
+from plot_utils import plot_regression_line
 
 # フォント設定（日本語が表示されるように）
 mpl.rcParams['font.family'] = 'MS Gothic'  # 例：Windowsの場合
@@ -33,8 +33,8 @@ mpl.rcParams['font.family'] = 'MS Gothic'  # 例：Windowsの場合
 
 #--------------------------------------------------------
 
-df = pd.read_csv("../../data/study_hours/score.csv")
-tdf = pd.read_csv("../../data/study_hours/score.csv")
+df = pd.read_csv("data/study_hours/score.csv")
+tdf = pd.read_csv("data/study_hours/score.csv")
 
 df = df.dropna()  # 欠損を含む行をすべて削除
 

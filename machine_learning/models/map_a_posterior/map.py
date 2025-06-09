@@ -21,20 +21,19 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import RidgeClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))) 
-from utils.plot_utils import plot_classification_report_bar
-from utils.plot_utils import plot_confusion_matrix_heatmap
+
+df = pd.read_csv("data/survey lung cancer.csv")
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../utils")))
+from plot_utils import plot_classification_report_bar
+from plot_utils import plot_confusion_matrix_heatmap
 mpl.rcParams['font.family'] = 'MS Gothic' 
 
-df = pd.read_csv("../../data/diabetes/diabetes.csv")
+df = pd.read_csv("data/diabetes/diabetes.csv")
 df = df.dropna()  # 欠損を含む行をすべて削除
 
 
 def main():
-    # データ読み込みと前処理
-    df = pd.read_csv("../../data/diabetes/diabetes.csv")
-    df = df.dropna()
-
     X = df.drop(columns=["Outcome"])
     y = df["Outcome"]
 
@@ -45,7 +44,7 @@ def main():
         X_scaled, y, test_size=0.2, random_state=0
     )
 
-    # MAP推定 ≒ Ridge分類器で学習
+    # MAP推定 
     model = RidgeClassifier(alpha=1.0)
     model.fit(X_train, y_train)
 
@@ -74,7 +73,6 @@ def main():
     xlabel="モデル予測",
     ylabel="実際の診断結果"
     )
-
 
 
 if __name__ == "__main__":

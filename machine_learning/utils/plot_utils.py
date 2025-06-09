@@ -3,6 +3,10 @@ import matplotlib as mpl
 from sklearn.metrics import classification_report, confusion_matrix
 import seaborn as sns #グラフ
 
+
+mpl.rcParams['font.family'] = 'MS Gothic'  # 例：Windowsの場合
+
+
 def plot_regression_line(x, y, y_pred, xlabel="", ylabel="", title="", xlim=None, ylim=None):
     plt.figure(figsize=(8, 6))
 
@@ -67,7 +71,7 @@ def plot_classification_report_bar(
     model_name,
     class_labels=None,
     title="分類評価指標",
-    xlabel="予測ラベル",
+    xlabel="予測",
     ylabel="実際のラベル"
     ):
     """

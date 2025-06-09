@@ -20,15 +20,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report
 
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))) 
-
-from utils.plot_utils import plot_regression_line
-from utils.plot_utils import plot_classification_report_bar
-from utils.plot_utils import plot_confusion_matrix_heatmap
-
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../utils")))
+from plot_utils import plot_regression_line
+from plot_utils import plot_classification_report_bar
+from plot_utils import plot_confusion_matrix_heatmap
 
 
-df = pd.read_csv("../../data/survey lung cancer.csv")
+
+df = pd.read_csv("data/survey lung cancer.csv")
 df = df.dropna()  # 欠損を含む行をすべて削除
 
 df['LUNG_CANCER'] = df['LUNG_CANCER'].map({'NO': 0, 'YES': 1})
@@ -103,12 +102,11 @@ def predict(X, weights):
     print(x)
     z = X @ weights
     y_prob = sigmoid(z)  # 確率
-    y_label = (y_prob >= 0.5).astype(int)  # クラス0/1に変換
+    y_label = (y_prob >= 0.5).astype(int)  
     return y_label, y_prob
 
 def logistic_model(X_input, weights):
     return sigmoid(X_input @ weights)
-
 
                                         
 def main():

@@ -19,18 +19,17 @@ from itertools import product #組み合わせ
 import sympy as sp #数式処理,論理式
 import pandas as pd
 
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))  
-from utils.plot_utils import plot_regression_line
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../utils")))
+from plot_utils import plot_regression_line
 
 # フォント設定（日本語が表示されるように）
 mpl.rcParams['font.family'] = 'MS Gothic'  # 例：Windowsの場合
 # mpl.rcParams['font.family'] = 'IPAexGothic'  # 例：Linux/インストール済みの日本語フォント
 
-#linear_regrssionのフォルダ内のパスで実行する
 
-df = pd.read_csv("../../data/study_hours/score.csv")
-tdf = pd.read_csv("../../data/study_hours/score.csv")
+
+df = pd.read_csv("data/study_hours/score.csv")
+tdf = pd.read_csv("data/study_hours/score.csv")
 df = df.dropna()  # 欠損を含む行をすべて削除
 
 

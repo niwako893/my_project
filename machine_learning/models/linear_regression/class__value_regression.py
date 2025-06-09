@@ -18,12 +18,13 @@ from itertools import product #組み合わせ
 import sympy as sp #数式処理,論理式
 import pandas as pd
 
+#階級値のみを利用
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))  # ← machine_learning まで戻る
-from utils.plot_utils import plot_regression_line
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../utils")))
+from plot_utils import plot_regression_line
 
-data1 = pd.read_csv("../../data/archive/Original_data_with_more_rows.csv")
-df = pd.read_csv("../../data/archive/Expanded_data_with_more_features.csv")
+data1 = pd.read_csv("data/archive/Original_data_with_more_rows.csv")
+df = pd.read_csv("data/archive/Expanded_data_with_more_features.csv")
 df = df.dropna()  # 欠損を含む行をすべて削除
 
 
